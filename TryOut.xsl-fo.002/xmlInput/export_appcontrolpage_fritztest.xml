@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publishDetail>
+   <global>
+      <Param0>16:14:06</Param0>
+      <Param1>05.12.2014</Param1>
+      <Param2>Fr</Param2>
+   </global>
+   <Root>
+      <AppID>59</AppID>
+      <personID>684</personID>
+      <bisherigesemester>
+         <bisherigesemester>0</bisherigesemester>
+      </bisherigesemester>
+      <HZB>
+         <personID>684</personID>
+         <schulart>Gymnasium (aHR)</schulart>
+         <entranceQualificationID>55</entranceQualificationID>
+         <erworbenim>
+            <erworbenim>Deutschland</erworbenim>
+            <countryuniquename>D</countryuniquename>
+            <district_lid>39</district_lid>
+            <landkreis>
+               <landkreis>Bonn</landkreis>
+            </landkreis>
+         </erworbenim>
+         <durchschnittsnote>
+            <grade>2.10000</grade>
+         </durchschnittsnote>
+         <zeugnisdatum>
+            <date>14.06.2010</date>
+         </zeugnisdatum>
+      </HZB>
+      <Dienst>
+         <servicebegin />
+         <serviceend />
+         <has_done_service>0</has_done_service>
+      </Dienst>
+      <Zusatzantraege>
+         <AntrGroupID>53</AntrGroupID>
+         <ApplicationID>53</ApplicationID>
+         <AppID>59</AppID>
+      </Zusatzantraege>
+      <PersonInformation>
+         <surname>Bauer</surname>
+         <firstname>Sascha</firstname>
+         <k_gender_id>1</k_gender_id>
+         <allfirstnames />
+         <birthcity>Gehrden</birthcity>
+         <birthdate>27.04.1991</birthdate>
+         <academicdegreesuffix />
+         <academicdegree_id />
+         <title_id />
+         <nameprefix />
+         <namesuffix />
+         <artistname />
+         <country_lid>48</country_lid>
+         <birthname />
+         <hsobjekt_id>7088</hsobjekt_id>
+         <BewerberNr>55</BewerberNr>
+         <AppID>59</AppID>
+         <personID>684</personID>
+         <geblad>
+            <geblad>Deutschland</geblad>
+         </geblad>
+         <address>
+            <street>Bennigsen-Platz 2</street>
+            <city>Langenhagen</city>
+            <postcode>30832</postcode>
+            <addressaddition />
+            <country_lid>48</country_lid>
+            <staat>
+               <staat>Deutschland</staat>
+            </staat>
+         </address>
+         <email>
+            <eaddress>Sascha.Bauer@mailinator.com</eaddress>
+         </email>
+         <staat>
+            <staat>Deutschland</staat>
+         </staat>
+      </PersonInformation>
+      <Hochschuldaten>
+         <Hochschulname>
+            <hochschulname>HIS eG</hochschulname>
+         </Hochschulname>
+         <Adresse>
+            <street>Goseriede 9</street>
+            <city>Hannover</city>
+            <postcode>30159</postcode>
+            <addressaddition />
+            <country_lid>48</country_lid>
+            <staat>
+               <staat>Deutschland</staat>
+            </staat>
+            <Telefonnummer>
+               <telnr>0511 / 12 00-0</telnr>
+            </Telefonnummer>
+            <Telefonnummer>
+               <telnr>(0511) 1220-0</telnr>
+            </Telefonnummer>
+            <Faxnummer>
+               <faxnr>(0511) 1220-250</faxnr>
+            </Faxnummer>
+         </Adresse>
+         <Adresse>
+            <street>Goseriede 9</street>
+            <city>Hannover</city>
+            <postcode>30159</postcode>
+            <addressaddition />
+            <country_lid />
+            <Telefonnummer>
+               <telnr>0511 / 12 00-0</telnr>
+            </Telefonnummer>
+            <Telefonnummer>
+               <telnr>(0511) 1220-0</telnr>
+            </Telefonnummer>
+            <Faxnummer>
+               <faxnr>(0511) 1220-250</faxnr>
+            </Faxnummer>
+         </Adresse>
+      </Hochschuldaten>
+      <Antrag>
+         <Sem>2</Sem>
+         <term_year>2014</term_year>
+         <Aid>53</Aid>
+         <seconddegree>0</seconddegree>
+         <WunschProf />
+         <AntragID>53</AntragID>
+         <AntragNr>1</AntragNr>
+         <AntrGroupID>53</AntrGroupID>
+         <semesterart>
+            <defaulttext>Wintersemester</defaulttext>
+            <termnumber>2</termnumber>
+         </semesterart>
+         <antragsstatus>
+            <defaulttext>Zulassungsangebot liegt vor</defaulttext>
+            <k_request_status.id>6</k_request_status.id>
+            <k_request_status.uniquename>ZV</k_request_status.uniquename>
+         </antragsstatus>
+         <Antragsfach>
+            <AntragNr>1</AntragNr>
+            <rsID>63</rsID>
+            <FS>1</FS>
+            <course_of_study_id>55</course_of_study_id>
+            <defaulttext>Bachelor of Science Betriebswirtschaftslehre</defaulttext>
+            <longtext>Bachelor of Science Betriebswirtschaftslehre</longtext>
+            <reqgrID>63</reqgrID>
+            <stgnr>1</stgnr>
+            <Abschl>1</Abschl>
+            <Stg>1</Stg>
+            <FKZ>2</FKZ>
+            <CoSLID>100055</CoSLID>
+            <Aid>53</Aid>
+            <abschluss>
+               <text>Bachelor of Science</text>
+               <astatLand>82</astatLand>
+               <astatBund>82</astatBund>
+            </abschluss>
+            <AdmissionType>
+               <k_admissiontype.hiskey_id>2</k_admissiontype.hiskey_id>
+               <k_admissiontype.defaulttext>Örtliche Zulassungsbeschränkung (NC)</k_admissiontype.defaulttext>
+            </AdmissionType>
+            <stg>
+               <text>Betriebswirtschaftslehre</text>
+            </stg>
+            <fkz>
+               <k_subject_indicator.defaulttext>Hauptfach</k_subject_indicator.defaulttext>
+            </fkz>
+            <zugeordneteHZB>
+               <schulart>Gymnasium (aHR)</schulart>
+               <entranceQualificationID>55</entranceQualificationID>
+               <durchschnittsnote>2.10000</durchschnittsnote>
+               <zeugnisdatum>14.06.2010</zeugnisdatum>
+            </zugeordneteHZB>
+         </Antragsfach>
+      </Antrag>
+      <application>
+         <requestSubject id="63" defaulttext="B.Sc. Betriebswirtschaftslehre" />
+      </application>
+   </Root>
+</publishDetail>
+

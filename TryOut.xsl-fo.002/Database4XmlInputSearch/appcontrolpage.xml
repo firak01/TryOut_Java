@@ -1,0 +1,239 @@
+<publishDetail VMErrorFile="hisreports/reports/vm/error.vm" WriteXMLFileTo1="[LOGROOT]//export_appcontrolpage_fritztest.xml" active="y">
+    <Report tanRequired="n"
+        directPDF="y"
+        database="hisinone"
+        global="[CURRENTTIME], [TODAY]"
+        authorities="RIGHT_CM_APP_APPLICATION_PRINT_CONTROLLSHEET"
+        outFileName="Kontrollblatt drucken">
+        <XSLObjects>
+			<en>publish/pmodul/xslfo/hisinone/appcontrolpage/appcontrolpageUniversal-en.xsl</en>
+<!-- 			<de>publish/pmodul/xslfo/hisinone/appcontrolpage/appcontrolpageUniversal.xsl</de> -->
+			<de>publish/pmodul/xslfo/hisinone/appcontrolpage/appcontrolpage.xsl</de>
+		</XSLObjects>
+        <Transform.SQL ElementName="Root">
+            SELECT applicant.id AS AppID,
+                person.id AS personID
+            FROM applicant, person
+            WHERE applicant.person_id=person.id AND person.id=[appPersonID]
+            <Transform.SubSQL ElementName="bisherigesemester">
+                SELECT studysemesters_completed AS bisherigesemester
+                FROM application
+                WHERE application.applicant_id=[AppID];
+            </Transform.SubSQL>
+			
+			<!--Hochschulreife ANFANG-->
+			 <Transform.SubSQL ElementName="HZB">
+                SELECT examplan.person_id AS personID, 
+					 entrance_qualification_type.defaulttext AS schulart, 
+					 entrance_qualification.id AS entranceQualificationID
+                FROM entrance_qualification, entrance_qualification_type, examplan 
+                WHERE examplan.person_id=[appPersonID] AND examplan.id=entrance_qualification.examplan_id
+                AND entrance_qualification.entrance_qualification_type_id=entrance_qualification_type.id;
+
+                <Transform.HisInOneConfig>
+                    <HisInOneConfig.Var name="fachgebundeneHochschulreifeID" confKey="cm.app.headmissiontype.specialheadmissiontypeid"/>
+                </Transform.HisInOneConfig>
+
+                <Transform.SubSQL ElementName="fachgebundenehochschulreife">
+                    SELECT entrance_qualification.id AS fachgebundenehochschulreifeID
+                    FROM entrance_qualification
+                    LEFT JOIN entrance_qualification_type on (entrance_qualification.entrance_qualification_type_id = entrance_qualification_type.id)
+                    WHERE entrance_qualification.id=[entranceQualificationID]
+                    AND entrance_qualification_type.obj_guid='[fachgebundeneHochschulreifeID]';
+                </Transform.SubSQL>
+           
+				<Transform.SubSQL ElementName="erworbenim">
+                SELECT country.defaulttext AS erworbenim, country.uniquename AS countryuniquename, examimport.district_lid AS district_lid
+                FROM examimport, country, examplan, entrance_qualification
+                WHERE examplan.person_id=[appPersonID] AND examplan.id=examimport.examplan_id
+                AND examplan.id=entrance_qualification.examplan_id  AND examimport.country_lid=country.lid
+                AND (country.valid_from &lt;= [CURRENTDATE] OR country.valid_from is null)
+                AND (country.valid_to &gt;= [CURRENTDATE] OR country.valid_to is null)
+				AND entrance_qualification.id = [entranceQualificationID];
+					
+                <Transform.SubSQL ElementName="landkreis">
+                    SELECT district.defaulttext AS landkreis 
+                    FROM district
+                    WHERE district.lid=[district_lid]
+                    AND (district.valid_from &lt;= [CURRENTDATE] OR district.valid_from is null)
+                    AND (district.valid_to &gt;= [CURRENTDATE] OR district.valid_to is null)
+					AND [countryuniquename]='D';
+                </Transform.SubSQL>
+					
+            </Transform.SubSQL>	
+				 
+            <Transform.SubSQL ElementName="durchschnittsnote">
+                SELECT foreign_grade AS grade
+                FROM examimport, examplan, entrance_qualification, unit, k_elementtype
+                WHERE examplan.person_id=[appPersonID] AND examplan.id=examimport.examplan_id
+                AND examplan.id=entrance_qualification.examplan_id AND examplan.unit_id=unit.id
+                AND unit.k_elementtype_id=k_elementtype.id AND k_elementtype.id=7
+				AND entrance_qualification.id = [entranceQualificationID];
+            </Transform.SubSQL>
+				 
+            <Transform.SubSQL ElementName="zeugnisdatum">
+                SELECT examplan.date_of_work AS date
+                FROM examplan, entrance_qualification
+                WHERE examplan.person_id=[appPersonID] AND examplan.id=entrance_qualification.examplan_id
+				AND entrance_qualification.id = [entranceQualificationID];
+            </Transform.SubSQL>
+				 
+            </Transform.SubSQL>
+			<!--Hochschulreife ENDE-->
+            <Transform.SubSQL ElementName="Dienst">
+                SELECT applicant.servicebegin AS servicebegin, applicant.serviceend AS serviceend,
+                    personinfo.has_done_service AS has_done_service
+                FROM applicant, personinfo
+                WHERE applicant.person_id = [appPersonID]
+                AND personinfo.person_id=[appPersonID];
+            </Transform.SubSQL>
+
+            <Transform.HisInOneConfig>
+                <HisInOneConfig.Var name="AusbildungUnitID" confKey="cm.app.application.apprenticeship.unit_id" />
+            </Transform.HisInOneConfig>
+
+            <Transform.SubSQL ElementName="Ausbildung">
+                SELECT examplan.id AS ausbildungID,
+                    examimport.startdate AS startdate,
+                    examimport.enddate AS enddate
+                FROM examplan, examimport, unit
+                WHERE unit.obj_guid = '[AusbildungUnitID]'
+                AND examplan.unit_id=unit.id
+                AND examplan.person_id=[appPersonID]
+                AND examimport.examplan_id=examplan.id;
+            </Transform.SubSQL>
+
+            <Transform.SubSQL ElementName="Zusatzantraege">
+                SELECT DISTINCT requestgroup.id AS AntrGroupID, application.id AS ApplicationID, application.applicant_id AS AppID
+                FROM requestgroup, application, term_type
+                WHERE application.applicant_id=[AppID]
+                AND requestgroup.application_id=application.id
+                AND application.id = [applicationId]
+				AND term_type.id=application.term_type_id;
+                <Transform.SubSQL ElementName="NachteilsausgleichWartezeit">
+                    SELECT entrance_qualification_amendment.id AS amendmentID
+                    FROM entrance_qualification_amendment, entrance_qualification_amendment_type, entrance_qualification, examplan, person
+                    WHERE examplan.person_id=[appPersonID]
+                    AND entrance_qualification_amendment_type.hiskey_id=2
+                    AND entrance_qualification_amendment.entrance_qualification_amendment_type_id=entrance_qualification_amendment_type.id
+                    AND entrance_qualification_amendment.entrance_qualification_id=entrance_qualification.id
+                    AND entrance_qualification.examplan_id = examplan.id
+                    GROUP BY amendmentID;
+                </Transform.SubSQL>
+                <Transform.SubSQL ElementName="NachteilsausgleichWartezeitBerufsausbildung">
+                    SELECT entrance_qualification_amendment.id AS amendmentID
+                    FROM entrance_qualification_amendment, entrance_qualification_amendment_type, entrance_qualification, examplan, person
+                    WHERE examplan.person_id=[appPersonID]
+                    AND entrance_qualification_amendment_type.hiskey_id=3
+                    AND entrance_qualification_amendment.entrance_qualification_amendment_type_id=entrance_qualification_amendment_type.id
+                    AND entrance_qualification_amendment.entrance_qualification_id=entrance_qualification.id
+                    AND entrance_qualification.examplan_id = examplan.id
+                    GROUP BY amendmentID;
+                </Transform.SubSQL>
+                <Transform.SubSQL ElementName="NachteilsausgleichNote">
+                    SELECT entrance_qualification_amendment.id AS amendmentID
+                    FROM entrance_qualification_amendment, entrance_qualification_amendment_type, entrance_qualification, examplan, person
+                    WHERE entrance_qualification_amendment_type.hiskey_id=1
+                    AND entrance_qualification_amendment.entrance_qualification_amendment_type_id=entrance_qualification_amendment_type.id
+                    AND entrance_qualification_amendment.entrance_qualification_id=entrance_qualification.id
+                    AND entrance_qualification.examplan_id = examplan.id
+                    AND examplan.person_id=[appPersonID]
+                    GROUP BY amendmentID;
+                </Transform.SubSQL>
+                <Transform.SubSQL ElementName="Spitzensportler">
+                    SELECT amendment.id AS amendmentID
+                    FROM amendment, application, k_amendmenttype
+                    WHERE amendment.k_amendmenttype_id=k_amendmenttype.id
+                    AND k_amendmenttype.hiskey_id=6
+                    AND amendment.application_id=application.id
+                    AND application.applicant_id=[AppID]
+                    GROUP BY amendmentID;
+                </Transform.SubSQL>
+                <Transform.SubSQL ElementName="EignungspruefungMusik">
+                    SELECT amendment.id AS amendmentID
+                    FROM amendment, application, k_amendmenttype
+                    WHERE amendment.k_amendmenttype_id=k_amendmenttype.id
+                    AND k_amendmenttype.hiskey_id=7
+                    AND amendment.application_id=application.id
+                    AND application.applicant_id=[AppID]
+                    GROUP BY amendmentID;
+                </Transform.SubSQL>
+                <Transform.SubSQL ElementName="Haertefall">
+                    SELECT amendment.id AS amendmentID
+                    FROM amendment, amendment_requestsubject, requestsubject, requestsubjectgroup, requestsubjectgroup_requestsubject, request, k_amendmenttype
+                    WHERE amendment.k_amendmenttype_id=k_amendmenttype.id
+                    AND k_amendmenttype.hiskey_id=3
+                    AND amendment_requestsubject.amendment_id=amendment.id
+                    AND amendment_requestsubject.requestsubjekt_id=requestsubject.id
+                    AND requestsubject.id=requestsubjectgroup_requestsubject.requestsubject_id
+					AND requestsubjectgroup.id = requestsubjectgroup_requestsubject.requestsubjectgroup_id
+                    AND requestsubjectgroup.request_id=request.id
+                    AND request.requestgroup_id=[AntrGroupID]
+                    GROUP BY amendmentID;
+                </Transform.SubSQL>
+                <Transform.SubSQL ElementName="BevorzugteZulassung">
+                    SELECT amendment.id AS amendmentID, course_of_study.defaulttext AS studiengang
+                    FROM amendment, amendment_requestsubject, requestsubject, requestsubjectgroup, requestsubjectgroup_requestsubject, request,
+                        course_of_study, k_amendmenttype
+                    WHERE amendment.k_amendmenttype_id=k_amendmenttype.id
+                    AND k_amendmenttype.hiskey_id=4
+                    AND amendment_requestsubject.amendment_id=amendment.id
+                    AND amendment_requestsubject.requestsubjekt_id=requestsubject.id
+                    AND requestsubject.id=requestsubjectgroup_requestsubject.requestsubject_id
+					AND requestsubjectgroup.id = requestsubjectgroup_requestsubject.requestsubjectgroup_id
+                    AND requestsubjectgroup.request_id=request.id
+                    AND request.requestgroup_id=[AntrGroupID]
+                    AND course_of_study.id=requestsubject.course_of_study_id;
+                </Transform.SubSQL>
+            </Transform.SubSQL>
+                        
+			<Transform.SubSQL ElementName="FehlendeUnterlagenBewerbung">
+                SELECT DISTINCT k_zulmissingdata.defaulttext as defaulttext,
+                    k_zulmissingdata.longtext as longtext,
+                    k_zulmissingdata.shorttext as shorttext,
+                    k_zulmissingdata.uniquename as uniquename,
+                    k_zulconsequence.defaulttext as consequenceDefaulttext,
+                    k_zulconsequence.longtext as consequenceLongtext,
+                    k_zulconsequence.shorttext as consequenceShorttext, 
+                    examplan.unit_id
+                FROM examplan, examrelation, k_workstatus, missingdata, k_zulmissingdata, k_zulconsequence,
+                	application
+                WHERE examplan.person_id = [appPersonID]
+                    AND examplan.default_examrelation_id=examrelation.id
+                    AND examrelation.k_workstatus_id = k_workstatus.id
+                    AND k_workstatus.hiskey_id=3
+                    AND examplan.unit_id = missingdata.unit_id
+                    AND missingdata.k_zulmissingdata_id = k_zulmissingdata.id
+                    AND k_zulmissingdata.category = 1
+                    AND k_zulmissingdata.k_zulconsequence_id = k_zulconsequence.id
+                    
+                    AND examplan.term_type_id = (SELECT application.term_type_id FROM application WHERE application.id = [applicationId])
+                    AND examplan.term_year = (SELECT application.term_year FROM application WHERE application.id = [applicationId])
+                   
+            </Transform.SubSQL>
+            
+            <Transform.SubSQL ElementName="FehlendeUnterlagenAlleFaecher">
+                SELECT k_zulmissingdata.defaulttext as defaulttext,
+                    k_zulmissingdata.longtext as longtext,
+                    k_zulmissingdata.shorttext as shorttext,
+                    k_zulmissingdata.uniquename as uniquename
+                FROM requestsubject_examplan, examplan, examrelation, k_workstatus, missingdata, k_zulmissingdata, k_zulconsequence
+                WHERE
+                    examplan.person_id = [appPersonID]
+                    AND requestsubject_examplan.examplan_id = examplan.id
+                    AND examplan.default_examrelation_id=examrelation.id
+                    AND examrelation.k_workstatus_id = k_workstatus.id
+                    AND k_workstatus.hiskey_id=3
+                    AND examplan.unit_id = missingdata.unit_id
+                    AND missingdata.k_zulmissingdata_id = k_zulmissingdata.id
+                    AND k_zulmissingdata.category = 2
+                    AND k_zulmissingdata.k_zulconsequence_id = k_zulconsequence.id;
+            </Transform.SubSQL>
+            
+            <Transform.GlobalObjects file="PersonInformationAPP.xml" subdir="printout/publishModul/globalObjects/hisinone/" object="PersonInformation"/>
+            <Transform.GlobalObjects file="OwnUniversity.xml" subdir="printout/publishModul/globalObjects/hisinone/" object="Hochschuldaten"/>
+            <Transform.GlobalObjects file="ApplicationInformation.xml" subdir="printout/publishModul/globalObjects/hisinone/" object="Antrag"/>
+
+        </Transform.SQL>
+    </Report>
+</publishDetail>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<publishDetail>
+   <global>
+      <Param0>14:16:22</Param0>
+      <Param1>08.12.2014</Param1>
+      <Param2>Mo</Param2>
+   </global>
+   <Root>
+      <applicant.applicantnumber>55</applicant.applicantnumber>
+      <Antrag>63</Antrag>
+      <FS>1</FS>
+      <longtext>Bachelor of Science Betriebswirtschaftslehre</longtext>
+      <requestsubject.k_admissionstatus_id>2</requestsubject.k_admissionstatus_id>
+      <admissionshare.admissionpackage_id>5</admissionshare.admissionpackage_id>
+      <admissionpackage.capacity>15</admissionpackage.capacity>
+      <admissionpackage.defaulttext>B.Sc. Betriebswirtschaftslehre / 1. FS</admissionpackage.defaulttext>
+      <NcKey>2</NcKey>
+      <admissionshare.course_of_study_id>55</admissionshare.course_of_study_id>
+      <admissiondate>11.02.2014</admissiondate>
+      <acceptancedate>28.02.2015</acceptancedate>
+      <rsID>63</rsID>
+      <receiptdate />
+      <requestsubject.scheduled_date_of_enrollment>31.03.2015</requestsubject.scheduled_date_of_enrollment>
+      <term_year>2014</term_year>
+      <Sem>2</Sem>
+      <ZulassungsArt>
+         <processStepName>Hauptverfahren</processStepName>
+      </ZulassungsArt>
+      <AnzAntraege>
+         <AnZAppID>1</AnZAppID>
+      </AnzAntraege>
+      <EinschreibenZeitraumStg>
+         <startdate>01.09.2014</startdate>
+         <enddate>28.02.2015</enddate>
+      </EinschreibenZeitraumStg>
+      <Antrags>
+         <AppID>59</AppID>
+         <Sem>2</Sem>
+         <term_year>2014</term_year>
+         <Aid>53</Aid>
+         <seconddegree>0</seconddegree>
+         <termnumber>2</termnumber>
+         <BewerbungDruckssemester>Wintersemester</BewerbungDruckssemester>
+         <Bewerbungssemester>WiSe</Bewerbungssemester>
+         <AntragID>53</AntragID>
+         <AntrGroupID>53</AntrGroupID>
+         <AppRem />
+         <semesterart>
+            <defaulttext>Wintersemester</defaulttext>
+         </semesterart>
+         <bewerbungszeitraum-default>
+            <startdate>01.01.2014</startdate>
+            <enddate>31.12.2014</enddate>
+            <SemLongText>Bewerbungszeitraum Wintersemester 2014/15 (NC-Studiengänge)</SemLongText>
+            <SemDefaulttext>Bewerbungszeitraum WiSe 2014/15 (NC)</SemDefaulttext>
+         </bewerbungszeitraum-default>
+         <Einschreiben-default>
+            <startdate>01.09.2014</startdate>
+            <enddate>28.02.2015</enddate>
+            <SemLongText>Immatrikulationszeitraum WiSe 2014/15</SemLongText>
+            <SemDefaulttext>Immatrikulationszeitraum WiSe 2014/15</SemDefaulttext>
+         </Einschreiben-default>
+         <Bewerber>
+            <surname>Bauer</surname>
+            <firstname>Sascha</firstname>
+            <k_gender_id>1</k_gender_id>
+            <birthcity>Gehrden</birthcity>
+            <birthdate>27.04.1991</birthdate>
+            <academicdegreesuffix />
+            <academicdegree_id />
+            <title_id />
+            <nameprefix />
+            <namesuffix />
+            <country_lid>48</country_lid>
+            <hsobjekt_id>7088</hsobjekt_id>
+            <BewerberNr>55</BewerberNr>
+            <personID>684</personID>
+            <address>
+               <street>Bennigsen-Platz 2</street>
+               <city>Langenhagen</city>
+               <postcode>30832</postcode>
+               <addressaddition />
+               <country_lid>48</country_lid>
+               <staat>
+                  <staat>Deutschland</staat>
+               </staat>
+            </address>
+         </Bewerber>
+      </Antrags>
+      <Hochschuldaten>
+         <Hochschulname>
+            <hochschulname>HIS eG</hochschulname>
+         </Hochschulname>
+         <Adresse>
+            <street>Goseriede 9</street>
+            <city>Hannover</city>
+            <postcode>30159</postcode>
+            <addressaddition />
+            <country_lid>48</country_lid>
+            <staat>
+               <staat>Deutschland</staat>
+            </staat>
+            <Telefonnummer>
+               <telnr>0511 / 12 00-0</telnr>
+            </Telefonnummer>
+            <Telefonnummer>
+               <telnr>(0511) 1220-0</telnr>
+            </Telefonnummer>
+            <Faxnummer>
+               <faxnr>(0511) 1220-250</faxnr>
+            </Faxnummer>
+         </Adresse>
+         <Adresse>
+            <street>Goseriede 9</street>
+            <city>Hannover</city>
+            <postcode>30159</postcode>
+            <addressaddition />
+            <country_lid />
+            <Telefonnummer>
+               <telnr>0511 / 12 00-0</telnr>
+            </Telefonnummer>
+            <Telefonnummer>
+               <telnr>(0511) 1220-0</telnr>
+            </Telefonnummer>
+            <Faxnummer>
+               <faxnr>(0511) 1220-250</faxnr>
+            </Faxnummer>
+         </Adresse>
+      </Hochschuldaten>
+   </Root>
+</publishDetail>
+

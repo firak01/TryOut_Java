@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<adressen>
+   <adresse id="42">
+      <name>Torsten Horn</name>
+      <strasse>Meinestr. 26</strasse>
+      <plz>52072</plz>
+      <ort>Aachen</ort>
+   </adresse>
+   <adresse id="43">
+      <name>Heinz Hinz</name>
+      <strasse>Hafenstr. 42</strasse>
+      <plz>21079</plz>
+      <ort>Hamburg</ort>
+   </adresse>
+   <adresse id="44">
+      <name>Karl Kunz</name>
+      <strasse>Königstr. 1</strasse>
+      <plz>50676</plz>
+      <ort>Köln</ort>
+   </adresse>
+</adressen>

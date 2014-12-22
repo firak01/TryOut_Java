@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+   <doc xml:base="http://www.hanser.de/" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <head>
+    <title>Linkliste</title>
+  </head>
+  <body>
+    <absatz>Linkliste: 
+       <link xlink:type="simple"
+       xlink:href="news.html">Neuigkeiten</link>!
+    </absatz>
+    <liste xml:base="/links/">
+
+      <item>
+        <link xlink:type="simple" xlink:href="books.html">
+           Books
+        </link>
+      </item>
+      <item>
+        <link xlink:type="simple" xlink:href="software.html">
+           Software
+        </link>
+      </item>
+      <item>
+        <link xlink:type="simple" xlink:href="dvd.html">DVD</link>
+      </item>
+
+    </liste>
+  </body>
+</doc>

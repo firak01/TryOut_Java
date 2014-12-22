@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="bibliothek.xsl"?>
+<bibliothek>
+
+   <autor id="a1" land="eng">
+      <vorname>Nick</vorname>
+      <nachname>Hornby</nachname>
+   </autor>   
+   <autor id="a2" land="usa">
+      <vorname>Bret Easton</vorname>
+      <nachname>Ellis</nachname>
+   </autor>     
+</bibliothek>

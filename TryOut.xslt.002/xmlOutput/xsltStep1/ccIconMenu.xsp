@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?><xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+<xp:this.resources>
+<xp:styleSheet/>
+</xp:this.resources>
+<div>
+<xp:link id="link1">
+<div style="background-color: #67c111;">
+<div>Aufgaben</div>
+<div>
+<span>12.01 - Planungsergebnis prüfen</span>
+<br/>
+<span>11.01 - Antrag HAV prüfen</span>
+<br/>
+<span>11.01 - Stellungsnahme Wieder...</span>
+<br/>
+<span>11.01 - Antrag HAV prüfen</span>
+<br/>
+</div>
+<div>7</div>
+</div>
+</xp:link>
+<xp:link id="link2">
+<div style="background-color: #d22a4e;">
+<div style="">Anschlussobjekte</div>
+<div style="">3</div>
+</div>
+</xp:link>
+<div style="background-image:url('iconMenue/bauabwicklung.jpg')">
+<div style="background-color: #04B404;">Bauabwicklung</div>
+<div style="background-color: #04B404;">7</div>
+</div>
+<div style="background-image:url('iconMenue/mzt.jpg')">
+<div style="background-color: #ec7225;">MZT</div>
+<div style="background-color: #ec7225;">2</div>
+</div>
+<div style="background-image:url('iconMenue/planung.jpg')">
+<div style="background-color: #dbbc01;">Planung</div>
+<div style="background-color: #dbbc01;">3</div>
+</div>
+<div style="background-color: #e66021;">
+<div style="">Anträge</div>
+<div style="">12</div>
+</div>
+<div style="background-color: #dfc202;">
+<div style="">XYZ ...</div>
+</div>
+<div style="background-image:url('iconMenue/installateur.jpg')">
+<div style="background-color: #d32b4f;">Installateure</div>
+<div style="background-color: #d32b4f;">3</div>
+</div>
+<div style="background-image:url('iconMenue/settings.png');background-color: #01bbe4;">
+<div style="">Einstellungen</div>
+</div>
+</div>
+</xp:view>

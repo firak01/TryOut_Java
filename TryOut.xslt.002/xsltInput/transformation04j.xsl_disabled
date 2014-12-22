@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+        <html>
+            <head>
+            <title>Fritz baut HTML</title>
+            </head>
+            <body>
+                <xsl:apply-templates />
+            </body>
+        </html>
+    </xsl:template>
+ 
+ 
+  <xsl:template match="@*|node()|text()|comment()|processing-instruction()">
+    <xsl:for-each select="@*|node()|text()|comment()|processing-instruction()">
+		<xsl:element name='name()'>
+    		<xsl:copy>   
+        		<xsl:copy-of select="@*|node()|text()|comment()|processing-instruction()"/>          
+      		</xsl:copy>
+    	</xsl:element>
+    </xsl:for-each>
+  </xsl:template>    
+ 
+</xsl:stylesheet>

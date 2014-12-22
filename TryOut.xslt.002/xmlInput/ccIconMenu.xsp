@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xp:view xmlns:xp="http://www.ibm.com/xsp/core">
+
+	<xp:this.resources>
+		<xp:styleSheet href="/iconMenue.css"></xp:styleSheet>
+	</xp:this.resources>
+	
+	<div class="iconMenueContent">
+
+        <xp:link escape="true" text="" id="link1"
+        	value="IconNav_1_2_1.xsp?mainContent=worklist">
+        	<div class="iconMenueApp"
+        		style="background-color: #67c111;">
+        		<div class="iconMenueApp_Header">Aufgaben</div>
+        		<div class="iconMenueApp_Content">
+
+        			<span>12.01 - Planungsergebnis prüfen</span>
+        			<br clear="all" />
+        			<span>11.01 - Antrag HAV prüfen</span>
+        			<br clear="all" />
+        			<span>11.01 - Stellungsnahme Wieder...</span>
+        			<br clear="all" />
+        			<span>11.01 - Antrag HAV prüfen</span>
+        			<br clear="all" />
+        		</div>
+
+        		<div class="iconMenueApp_Counter_New">7</div>
+        	</div>
+        </xp:link>
+ <xp:link escape="true" text="" id="link2"
+        	value="IconNav_1_2_1.xsp?mainContent=ccCaseAllListRepeat.xsp">
+        <div class="iconMenueApp" style="background-color: #d22a4e;">
+             <div class="iconMenueApp_Header" style="">Anschlussobjekte</div>
+             <div class="iconMenueApp_Counter_New" style="">3</div>
+        </div>
+        </xp:link>
+
+        <div class="iconMenueApp" style="background-image:url('iconMenue/bauabwicklung.jpg')">
+                 <div class="iconMenueApp_Header" style="background-color: #04B404;">Bauabwicklung</div>
+                 <div class="iconMenueApp_Counter_New" style="background-color: #04B404;">7</div>
+        </div>
+
+        <div class="iconMenueApp" style="background-image:url('iconMenue/mzt.jpg')">
+                 <div class="iconMenueApp_Header" style="background-color: #ec7225;">MZT</div>
+                 <div class="iconMenueApp_Counter_New" style="background-color: #ec7225;">2</div>
+        </div>
+
+
+
+        <div class="iconMenueApp" style="background-image:url('iconMenue/planung.jpg')">
+             <div class="iconMenueApp_Header" style="background-color: #dbbc01;">Planung</div>
+             <div class="iconMenueApp_Counter_New" style="background-color: #dbbc01;">3</div>
+
+        </div>
+
+        <div class="iconMenueApp" style="background-color: #e66021;">
+             <div class="iconMenueApp_Header" style="">Anträge</div>
+             <div class="iconMenueApp_Counter_New" style="">12</div>
+        </div>
+
+        <div class="iconMenueApp" style="background-color: #dfc202;">
+             <div class="iconMenueApp_Header" style="">XYZ ...</div>
+        </div>
+
+
+
+
+                 <div class="iconMenueApp" style="background-image:url('iconMenue/installateur.jpg')">
+                  <div class="iconMenueApp_Header" style="background-color: #d32b4f;">Installateure</div>
+                  <div class="iconMenueApp_Counter_New" style="background-color: #d32b4f;">3</div>
+        </div>
+
+        <div class="iconMenueApp" style="background-image:url('iconMenue/settings.png');background-color: #01bbe4;">
+             <div class="iconMenueApp_Header" style="">Einstellungen</div>
+        </div>
+
+</div>
+	
+	
+	
+	
+	
+</xp:view>

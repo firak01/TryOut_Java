@@ -38,19 +38,19 @@ public class xpathParser01 {
 		
 		
 		
-		//Eclipse Worspace
+		//Eclipse Workspace
 		File f = new File("");
 	    String sPathEclipse = f.getAbsolutePath();
 	    System.out.println("Eclipse absolut path: " + sPathEclipse);
         //String sPathParent = sPathEclipse.substring(0, sPathEclipse.lastIndexOf(System.getProperty("file.separator")));
         String sBaseDirectory = sPathEclipse + File.separator + "xmlInput";
-         
-        String sFileName = "employee.xml";
-        
+                 
 		//... Ab hier wie bei der Paremterübergabe im fertig gepackten .jar - File...
 		if(sBaseDirectory.equals("")) throw new Exception("Kein Verzeichnis mit den .xml Dateien als Parameter angegeben (Leerstring).");		
 		System.out.println("Directory to process: '" + sBaseDirectory + "'");
 		
+		String sFileName = "employee.xml";
+		System.out.println("File to process: '" + sFileName + "'");
 		
 		
 		//########################################################
@@ -81,7 +81,7 @@ public class xpathParser01 {
 		
 		
 		//+++ Nun das XPath - Objekt
-		String expression = "/Employees/Employee[@emplid='3333']/email";
+		String expression = "/employees/employee[@emplid='3333']/email";
 				
 		XPath xPath = XPathFactory.newInstance().newXPath();
 		

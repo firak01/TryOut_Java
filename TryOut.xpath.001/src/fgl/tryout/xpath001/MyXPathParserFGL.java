@@ -110,7 +110,7 @@ public class MyXPathParserFGL {
 				for(int i = 0 ; nodeList != null && i < nodeList.getLength(); i++){
 					Node nodeSub = nodeList.item(i);
 					if(nodeSub.getNodeType() == Node.ELEMENT_NODE){
-						System.out.println(i+1 + ". Wert, Kontentname:Wert erster Kindknoten: " + nodeList.item(i).getNodeName() + " : " + nodeSub.getFirstChild().getNodeValue());
+						System.out.println(i+1 + ". Wert, Knotentname:Wert erster Kindknoten: " + nodeList.item(i).getNodeName() + " : " + nodeSub.getFirstChild().getNodeValue());
 					}
 				}
 			}

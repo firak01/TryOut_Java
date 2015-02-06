@@ -87,9 +87,10 @@ public class MyXPathParserFGL {
 			//FGL: Ein etwas (!) 'generischerer' Ansatz, d.h. von dem ausgwählten Ausdruck unabhängiger.
 			//read an xml node using xpath		
 			Node node = (Node) xPath.compile(expression).evaluate(document, XPathConstants.NODE);
-			
-			//Wenn ein Stringwert zurückkommt, liefer diesen, ansonsten den Node-Wert (FGL-Erweiterung)		
-			if(node.getNodeValue() != null && node != null){
+
+			//Wenn ein Stringwert zurückkommt, liefere diesen, ansonsten den Node-Wert (FGL-Erweiterung). 
+			//Beachte die null-Überprüfung ist absichtlich so von der Reihenfolge her.
+			if(null != node && null != node.getNodeValue()){
 				System.out.println("Node - Wert: '" + node.getNodeValue() + "'");
 			}else{
 				

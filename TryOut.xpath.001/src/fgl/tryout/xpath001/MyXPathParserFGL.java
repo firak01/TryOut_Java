@@ -18,6 +18,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 public class MyXPathParserFGL {
 
+		//TODO: Den XPathParser als seperates Projekt einbinden.
+	    //      Merke: Ihn gibt es schon als seperates Repository....
 		public void MyXPathPaserFGL(){		
 		}
 		

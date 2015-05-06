@@ -17,6 +17,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+/*TODO GOON: Das in ein eigenes Package auslagern UND in ein eigenes Projekt TryOut.My_XmlTransformer */
 public class XmlTransformer {
 	private String sDirectoryXPage=null;
 	private String sDirectoryXPageOutput=null;

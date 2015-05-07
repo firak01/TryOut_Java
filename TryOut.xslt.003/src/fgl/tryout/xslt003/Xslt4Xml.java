@@ -13,6 +13,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import transformer.XmlTransformer;
+
 
 public class Xslt4Xml {
 	//Nur zum testen: private static final String sBASE_DIRECTORY="c:\\temp\\20130110XSLT Notes Export Import\\CustomControls";
@@ -25,7 +27,7 @@ public class Xslt4Xml {
 		if(args==null) throw new Exception("Kein Verzeichnis mit den .xsd Dateien als Parameter angegeben (null).");
 		if(args.length==0) throw new Exception("Kein Verzeichnis mit den .xsd Dateien als Parameter angegeben (0).");
 		
-		//Die Verzeichnisse dürfen maximal mit einem Leerzeichen versehen sein!
+		//Die Verzeichnisse dï¿½rfen maximal mit einem Leerzeichen versehen sein!
 		String sBaseDirectory = new String("");
 		for(String s : args){
 			if(sBaseDirectory.equals("")){

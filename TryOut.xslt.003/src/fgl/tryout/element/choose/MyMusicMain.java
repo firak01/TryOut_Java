@@ -2,7 +2,8 @@ package fgl.tryout.element.choose;
 
 import java.io.File;
 
-import fgl.tryout.xslt003.XmlTransformer;
+import transformer.XmlTransformer;
+
 
 /**
  * Mit daten von

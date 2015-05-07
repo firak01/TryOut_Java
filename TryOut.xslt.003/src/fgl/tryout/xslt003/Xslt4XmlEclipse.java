@@ -13,6 +13,8 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 
+import transformer.XmlTransformer;
+
 
 public class Xslt4XmlEclipse {
 	//Nur zum testen: private static final String sBASE_DIRECTORY="c:\\temp\\20130110XSLT Notes Export Import\\CustomControls";

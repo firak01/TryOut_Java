@@ -37,18 +37,24 @@ public class MyMusicMain {
 		    String sPathEclipse = f.getAbsolutePath();
 		    System.out.println("Eclipse absolut path: " + sPathEclipse);
 	        //String sPathParent = sPathEclipse.substring(0, sPathEclipse.lastIndexOf(System.getProperty("file.separator")));
-	        String sBaseDirectory = sPathEclipse + File.separator + "xmlInput";
-	 
-			if(sBaseDirectory.equals("")) throw new Exception("Kein Verzeichnis mit den .xsd Dateien als Parameter angegeben (Leerstring).");
+		    
+		    //TODO: Ermittle als default den Packagenamen
+		    String sPathByPackageName = "element" + File.separator + "choose";
+	        String sBaseDirectoryXml = sPathEclipse + File.separator + "xmlInput" + File.separator + sPathByPackageName;
+	        String sBaseDirectoryXslt = sPathEclipse + File.separator + "xsltInput" + File.separator + sPathByPackageName;
+	        String sBaseDirectoryOutput = sPathEclipse + File.separator + "zOutput" + File.separator + sPathByPackageName;
+	        
+			//... Ab hier wie bei der Parameterübergabe im fertig gepackten .jar - File...
+	        if(sBaseDirectoryXml.equals("")) throw new Exception("Kein Verzeichnis mit den .xml Dateien als Parameter angegeben (Leerstring).");		
+			System.out.println("Directory to process: '" + sBaseDirectoryXml + "'");
+
+			if(sBaseDirectoryXslt.equals("")) throw new Exception("Kein Verzeichnis mit den .xsd Dateien als Parameter angegeben (Leerstring).");		
+			System.out.println("Directory to process: '" + sBaseDirectoryXslt + "'");
+
+			if(sBaseDirectoryOutput.equals("")) throw new Exception("Kein Verzeichnis für den Output als Parameter angegeben (Leerstring).");		
+			System.out.println("Directory to process: '" + sBaseDirectoryOutput + "'");
 			
-			//TODO: Errechne den Package Namen
-			String sPackageDirectory = "element" + File.separator + "choose"; 
-			String sProcessingDirectory = sBaseDirectory + File.separator + sPackageDirectory;
-			System.out.println("Directory to process: '" + sProcessingDirectory + "'");
-	
-			
-			
-			XmlTransformer objT = new XmlTransformer(sProcessingDirectory);
+			XmlTransformer objT = new XmlTransformer(sBaseDirectoryXml, sBaseDirectoryXslt, sBaseDirectoryOutput);
 			objT.start();
 					
 			System.out.println("\nALL FINISHED!");

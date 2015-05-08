@@ -38,8 +38,17 @@ public class Xslt4Xml {
 		}
 		if(sBaseDirectory.equals("")) throw new Exception("Kein Verzeichnis mit den .xsd Dateien als Parameter angegeben (Leerstring).");		
 		System.out.println("Directory to process: '" + sBaseDirectory + "'");
-				
-		XmlTransformer objT = new XmlTransformer(sBaseDirectory);
+		
+		String sBaseDirectoryXslt = sBaseDirectory;
+		if(sBaseDirectoryXslt.equals("")) throw new Exception("Kein Verzeichnis mit den .xsd Dateien als Parameter angegeben (Leerstring).");		
+		System.out.println("Directory to process: '" + sBaseDirectoryXslt + "'");
+
+		String sBaseDirectoryOutput = sBaseDirectory;
+		if(sBaseDirectoryXslt.equals("")) throw new Exception("Kein Verzeichnis für den Output als Parameter angegeben (Leerstring).");		
+		System.out.println("Directory for Output: '" + sBaseDirectoryOutput + "'");
+
+		
+		XmlTransformer objT = new XmlTransformer(sBaseDirectory, sBaseDirectoryXslt, sBaseDirectoryOutput);
 		objT.start();
 				
 		System.out.println("\nALL FINISHED!");
